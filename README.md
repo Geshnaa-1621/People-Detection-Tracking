@@ -1,17 +1,23 @@
-# People-Detection-Tracking
-People detection and tracking using YOLO, ByteTrack and OpenCV
-A computer vision project that detects and tracks people in a video using YOLO, ByteTrack, and OpenCV.
+# People Detection and Tracking
 
-## Features
+This project detects and tracks people in a video using YOLO, ByteTrack and OpenCV.
 
-- Detect people in video frames
-- Assign unique tracking IDs
-- Track people across consecutive frames
-- Draw bounding boxes around detected people
-- Display the current number of tracked people
-- Save the processed video
+I built this project to understand how object detection and multi-object tracking work together. The program takes a video as input, detects people in each frame and assigns an ID to each person so they can be tracked as they move.
 
-## Technologies Used
+## Demo
+
+![Tracking Result](tracking_result.png)
+
+## What it does
+
+- Detects people in a video
+- Tracks multiple people at the same time
+- Assigns an ID to each tracked person
+- Shows a bounding box around each person
+- Shows the current number of people being tracked
+- Saves the processed video
+
+## Tools used
 
 - Python
 - YOLO
@@ -19,36 +25,19 @@ A computer vision project that detects and tracks people in a video using YOLO, 
 - OpenCV
 - Google Colab
 
-## How It Works
+## How it works
 
-The system processes the input video frame by frame.
+The video is read frame by frame using OpenCV.
 
-YOLO is used to detect people in each frame. ByteTrack then associates detected people across frames and assigns tracking IDs.
+YOLO is used to detect people in each frame. The detections are then passed to ByteTrack, which tracks the people between frames and assigns IDs.
 
-The system displays:
+The result is displayed with a bounding box and ID around each person.
 
-- Bounding boxes
-- Person tracking IDs
-- Current number of tracked people
-
-The processed video is saved as an output video.
-
-## Project Pipeline
+Example:
 
 ```text
-Input Video
-     |
-     v
-YOLO Person Detection
-     |
-     v
-ByteTrack
-     |
-     v
-Person Tracking IDs
-     |
-     v
-Bounding Boxes + People Count
-     |
-     v
-Output Video
+Person ID: 1
+Person ID: 2
+Person ID: 3
+
+People Tracked: 3
