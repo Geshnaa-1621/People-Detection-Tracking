@@ -42,3 +42,50 @@ Person ID: 2
 Person ID: 3
 
 People Tracked: 3
+
+## Why I chose this approach
+
+I chose YOLO because it is a popular object detection model that can detect objects quickly and works well for video-based applications.
+
+I used ByteTrack for tracking because it can associate detected objects between consecutive frames and assign tracking IDs. This allowed me to track multiple people without having to build a separate tracking algorithm from scratch.
+
+I used OpenCV to read the video, draw bounding boxes and IDs, and save the final output video.
+
+## Detection and tracking pipeline
+
+The system processes the video frame by frame.
+
+1. OpenCV reads a frame from the input video.
+2. YOLO detects people in the frame.
+3. The person detections are passed to ByteTrack.
+4. ByteTrack associates people with existing tracks and assigns tracking IDs.
+5. Bounding boxes and IDs are drawn on the frame.
+6. The current number of tracked people is displayed.
+7. The processed frame is written to the output video.
+
+The basic pipeline is:
+
+Input Video → YOLO Detection → ByteTrack → ID Assignment → Bounding Boxes + Count → Output Video
+
+## Challenges I encountered
+
+One of the first challenges was getting the video processing and detection working correctly in Google Colab.
+
+During testing, I also noticed that ByteTrack could produce tracking IDs such as 273 or 493 instead of simple numbers. I added an ID mapping so that the IDs displayed in the final video are easier to understand.
+
+Another challenge was processing and displaying every video frame during testing. This made the notebook very slow, so I changed the testing approach to avoid displaying every frame.
+
+Tracking can also become less reliable when people overlap, move out of view, or are temporarily hidden.
+
+## Improvements for real-time deployment
+
+For a real-time system, I would make several improvements:
+
+- Use a faster or optimized YOLO model depending on the hardware.
+- Use GPU acceleration for faster inference.
+- Process frames efficiently and avoid unnecessary image conversions.
+- Tune the ByteTrack parameters for the specific camera environment.
+- Add better handling for people who temporarily disappear.
+- Use a live camera stream instead of a pre-recorded video.
+- Measure FPS and latency to monitor real-time performance.
+- For more difficult scenes, consider stronger tracking methods or appearance-based re-identification.
