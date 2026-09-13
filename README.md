@@ -43,8 +43,7 @@ Person ID: 3
 
 People Tracked: 3
 
-```text
-
+```
 ## Why I chose this approach
 
 I chose YOLO because it is a popular object detection model that can detect objects quickly and works well for video-based applications.
