@@ -6,7 +6,8 @@ I built this project to understand how object detection and multi-object trackin
 
 ## Demo
 
-![Tracking Result](tracking_result.png)
+![Tracking Result 1](tracking_output_1.jpeg.jpeg)
+![Tracking Result 2](tracking_output_2.jpeg.jpeg)
 
 ## What it does
 
